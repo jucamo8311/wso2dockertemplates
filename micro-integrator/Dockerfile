@@ -98,7 +98,7 @@ RUN \
 COPY --chown=wso2carbon:wso2 docker-entrypoint.sh ${USER_HOME}/
 
 RUN chmod a+x /home/wso2carbon/docker-entrypoint.sh
-
+RUN echo ${WSO2_SERVER_HOME}
 # install required packages
 RUN apk add --no-cache netcat-openbsd
 # add the WSO2 product distribution to user's home directory
@@ -109,7 +109,7 @@ RUN \
     && chown wso2carbon:wso2 -R ${WSO2_SERVER_HOME}
 
 # set the user and work directory
-USER ${USER_ID}
+USER ${USER}:${USER_GROUP}
 WORKDIR ${USER_HOME}
 
 # set environment variables
