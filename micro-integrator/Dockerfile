@@ -94,7 +94,6 @@ RUN \
 
 # copy init script to user home
 COPY --chown=wso2carbon:wso2 docker-entrypoint.sh ${USER_HOME}/
-RUN chown a+x ${USER_HOME}/docker-entrypoint.sh
 RUN ls -la
 
 # install required packages
