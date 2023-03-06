@@ -75,8 +75,10 @@ ARG WSO2_SERVER_NAME=wso2mi
 ARG WSO2_SERVER_VERSION=4.1.0
 ARG WSO2_SERVER_REPOSITORY=micro-integrator
 ARG WSO2_SERVER=${WSO2_SERVER_NAME}-${WSO2_SERVER_VERSION}
-ARG WSO2_SERVER_HOME=${USER_HOME}/${WSO2_SERVER_REPOSITORY}-${WSO2_SERVER_VERSION}
-ARG WSO2_SERVER_DIST_URL=https://github.com/wso2/${WSO2_SERVER_REPOSITORY}/archive/refs/tags/v${WSO2_SERVER_VERSION}.zip
+ARG WSO2_SERVER_HOME=${USER_HOME}/${WSO2_SERVER_NAME}-${WSO2_SERVER_VERSION}
+ARG WSO2_SERVER_DIST_URL=https://product-dist.wso2.com/products/${WSO2_SERVER_REPOSITORY}/${WSO2_SERVER_VERSION}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}.zip
+
+
 # build argument for MOTD
 ARG MOTD='printf "\n\
  Welcome to WSO2 Docker Resources \n\
@@ -96,7 +98,6 @@ RUN \
 COPY --chown=wso2carbon:wso2 docker-entrypoint.sh ${USER_HOME}/
 
 RUN chmod a+x /home/wso2carbon/docker-entrypoint.sh
-RUN ls -la /home/wso2carbon/
 
 # install required packages
 RUN apk add --no-cache netcat-openbsd
