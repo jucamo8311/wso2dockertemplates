@@ -102,11 +102,10 @@ RUN echo ${WSO2_SERVER_HOME}
 # install required packages
 RUN apk add --no-cache netcat-openbsd
 # add the WSO2 product distribution to user's home directory
-RUN \
-    wget -O ${WSO2_SERVER}.zip "${WSO2_SERVER_DIST_URL}" \
-    && unzip -d ${USER_HOME} ${WSO2_SERVER}.zip \
-    && rm -f ${WSO2_SERVER}.zip \
-    && chown wso2carbon:wso2 -R ${WSO2_SERVER_HOME}
+RUN wget -O ${WSO2_SERVER}.zip "${WSO2_SERVER_DIST_URL}"
+RUN unzip -d ${USER_HOME} ${WSO2_SERVER}.zip
+RUN rm -f ${WSO2_SERVER}.zip
+RUN chown wso2carbon:wso2 -R ${WSO2_SERVER_HOME}
 
 # set the user and work directory
 USER ${USER}:${USER_GROUP}
